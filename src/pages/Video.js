@@ -16,6 +16,7 @@ function Video() {
 
   return (
     <div className="video">
+      
       <video
         className="video_player"
         ref={videoRef}
@@ -23,6 +24,7 @@ function Video() {
         loop
         src="https://poqlymuephttfsljdabn.supabase.co/storage/v1/object/public/jornadadev/brecker2.mp4?t=2023-05-22T19%3A37%3A45.885Z "
       ></video>
+
     </div>
   );
 }
