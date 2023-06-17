@@ -19,18 +19,25 @@
     display: flex;
 }
 
-.videoMusicFooter_text{
-
+.videoFooter_icon{
+    position: absolute;
+    bottom: 15px;
 }
 
-.videoMusicFooter_icon{
-
+.videoMusicFooter_text{
+    width: 86%;
+    overflow: hidden;
+    
+}
+.videoMusicFooter_text p{
+    animation: moveTheText 6s infinite linear;
+    
 }
 
 .videoFooter_record{
     animation: spinTheRecord 3s infinite linear;
     position: absolute;
-    bottom: 50px;
+    bottom: 4px;
     right: 20px;
     height: 50px;
     filter: invert(1);
@@ -42,6 +49,16 @@
     }
     100%{
         transform: rotate(360deg);
+
+    }
+}
+
+@keyframes moveTheText {
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(-100%);
 
     }
 }
