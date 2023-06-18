@@ -1,20 +1,41 @@
-import './App.css';
-import Video from './pages/Video';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import Video from "./pages/Video";
+import db from "./config/firebase";
+import { collection, getDocs } from "firebase/firestore/lite";
 
 function App() {
+  const [videos, setVideos] = useState([]);
+
+  async function getVideos() {
+    const videosCollection = collection(db, "videos");
+    const videosSnepshot = await getDocs(videosCollection);
+    const videoList = videosSnepshot.docs.map((doc) => doc.data());
+
+    setVideos(videoList);
+  }
+
+  useEffect(() => {
+    getVideos();
+  }, []);
+
   return (
     <div className="App">
-      <div className='app_videos'>
-      <Video 
-        likes={100}
-        messenges={200}
-        shares={300}
-        name="fulano"
-        description="um gato goleiro"
-        music="qualquer musica - fulano 2"
-        url="https://poqlymuephttfsljdabn.supabase.co/storage/v1/object/public/jornadadev/brecker2.mp4?t=2023-05-22T19%3A37%3A45.885Z"
-      />
-
+      <div className="app_videos">
+        {videos.map((item) => {
+          return (
+            <Video
+              likes={item.likes}
+              messenges={item.messenges}
+              shares={item.shares}
+              name={item.name}
+              description={item.description}
+              music={item.music}
+              url={item.url}
+            />
+          );
+        })}
+        
       </div>
     </div>
   );
