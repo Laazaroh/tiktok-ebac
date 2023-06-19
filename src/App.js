@@ -28,7 +28,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App" style={{maxHeight: maxHeight+px}}>
+    <div className="App" style={{maxHeight: maxHeight+"px"}}>
       <div className="app_videos">
         {videos.map((item) => {
           return (
